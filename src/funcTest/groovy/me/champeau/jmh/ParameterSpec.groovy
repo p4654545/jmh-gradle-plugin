@@ -37,6 +37,19 @@ class ParameterSpec extends AbstractFuncSpec {
         !result.output.contains('parameter option not respected')
     }
 
+    def "Respects fail on exit"() {
+
+        given:
+        usingSample("java-project")
+
+        when:
+        def result = build("jmh", "-Pfail")
+
+        then:
+        result.task(":jmh").outcome == FAIL
+        result.output.contains('parameter option not respected')
+    }
+
     def "executes with configuration cache"() {
         given:
         usingSample("java-project")

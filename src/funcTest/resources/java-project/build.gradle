@@ -27,6 +27,6 @@ jmh {
     benchmarkMode = ['thrpt','ss']
     resultsFile = file('build/reports/benchmarks.csv')
     def aParams = project.objects.listProperty(String).value(['a'])
-    benchmarkParameters = [a: aParams]
+    benchmarkParameters = [a: [project.hasProperty("fail") ? "b" : "a"]]
     failOnError = true
 }
