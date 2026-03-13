@@ -35,6 +35,7 @@ public class JavaBenchmark {
     @Benchmark
     public double sqrtBenchmark() {
         if (!"a".equals(a)) {
+            System.out.println("Throwing RuntimeException!!!!!!!!!!!");
             throw new RuntimeException("parameter option not respected");
         }
         return Math.sqrt(value);

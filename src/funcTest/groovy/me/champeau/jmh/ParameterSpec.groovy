@@ -20,6 +20,7 @@ import spock.lang.Unroll
 
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
 import static org.gradle.testkit.runner.TaskOutcome.UP_TO_DATE
+import static org.gradle.testkit.runner.TaskOutcome.FAILED
 
 @Unroll
 class ParameterSpec extends AbstractFuncSpec {
@@ -43,10 +44,10 @@ class ParameterSpec extends AbstractFuncSpec {
         usingSample("java-project")
 
         when:
-        def result = build("jmh", "-Pfail")
+        def result = buildAndFail("-Pfail", "jmh")
 
         then:
-        result.task(":jmh").outcome == FAIL
+        result.task(":jmh").outcome == FAILED
         result.output.contains('parameter option not respected')
     }
 
