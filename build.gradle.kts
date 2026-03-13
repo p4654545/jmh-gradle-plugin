@@ -43,7 +43,7 @@ dependencies {
 
     testImplementation("org.openjdk.jmh:jmh-core:$jmhVersion")
     testImplementation("org.openjdk.jmh:jmh-generator-bytecode:$jmhVersion")
-    testImplementation("commons-io:commons-io:2.19.0")
+    testImplementation("commons-io:commons-io:2.21.0")
 }
 
 java {
@@ -55,7 +55,7 @@ java {
 }
 
 jacoco {
-    toolVersion = "0.8.13"
+    toolVersion = "0.8.14"
 }
 
 tasks.jacocoTestReport {
